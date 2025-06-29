@@ -1,13 +1,13 @@
-package com.ben.backend;
+package com.ben.joblisting;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BackendApplication {
+public class JobListingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackendApplication.class, args);
+		SpringApplication.run(JobListingApplication.class, args);
 	}
 
 }
