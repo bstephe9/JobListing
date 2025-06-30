@@ -23,7 +23,7 @@ const Feed = () => {
       setPost(response.data);
     };
     const fetchInitialPosts = async () => {
-        const response = await axios.get(`http://localhost:8080/allPosts`);
+        const response = await axios.get(`http://localhost:8080/posts`);
         console.log(response);
         setPost(response.data);
     }
