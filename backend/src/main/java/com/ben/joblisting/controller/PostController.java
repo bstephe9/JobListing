@@ -2,6 +2,7 @@ package com.ben.joblisting.controller;
 
 import com.ben.joblisting.model.Post;
 import com.ben.joblisting.repository.PostRepository;
+import com.ben.joblisting.repository.SearchRepository;
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +13,12 @@ import java.util.List;
 @RestController
 public class PostController {
 
-	PostRepository repository;
+	PostRepository postRepository;
+	SearchRepository searchRepository;
 
-	public PostController(PostRepository repository) {
-		this.repository = repository;
+	public PostController(PostRepository postRepository, SearchRepository searchRepository) {
+		this.postRepository = postRepository;
+		this.searchRepository = searchRepository;
 	}
 
 	@Hidden
@@ -26,12 +29,17 @@ public class PostController {
 
 	@GetMapping("/posts")
 	public List<Post> getAllPosts() {
-		return repository.findAll();
+		return postRepository.findAll();
+	}
+
+	@GetMapping("/posts/{text}")
+	public List<Post> search(@PathVariable String text) {
+		return searchRepository.findByText(text);
 	}
 
 	@PostMapping("/post")
 	public Post addPost(@RequestBody Post post) {
-		return repository.save(post);
+		return postRepository.save(post);
 	}
 
 }
