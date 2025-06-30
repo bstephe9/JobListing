@@ -4,9 +4,7 @@ import com.ben.joblisting.model.Post;
 import com.ben.joblisting.repository.PostRepository;
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,6 +27,11 @@ public class PostController {
 	@GetMapping("/posts")
 	public List<Post> getAllPosts() {
 		return repository.findAll();
+	}
+
+	@PostMapping("/post")
+	public Post addPost(@RequestBody Post post) {
+		return repository.save(post);
 	}
 
 }
