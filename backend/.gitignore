@@ -34,3 +34,4 @@ build/
 
 ### Misc. ###
 secrets.properties
+*.log
